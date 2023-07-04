@@ -1,40 +1,40 @@
-export function useJSX({ data }) {
-  let { title, page, id } = data;
-  return (
-    <div>
-      <h2> {title} </h2>
-      <p> {page},{id} </p>
-    </div>
-  )
-}
+// export function useJSX({ data }) {
+//   let { title, page, id } = data;
+//   return (
+//     <div>
+//       <h2> {title} </h2>
+//       <p> {page},{id} </p>
+//     </div>
+//   )
+// }
 
-export function useSpreadOperation({ data }) {
-  const obj = { ...data, name: "test" }
-  return (
-    <div>
-      <h2> {obj.name} </h2>
-    </div>
-  )
-}
+// export function useSpreadOperation({ data }) {
+//   const obj = { ...data, name: "test" }
+//   return (
+//     <div>
+//       <h2> {obj.name} </h2>
+//     </div>
+//   )
+// }
 
-// not hoisted like function definitions and no local "this"
-export const useArrowFunction = ({ data }) => {
-  let { title, page, id } = data;
-  return (
-    <div>
-      <h2> {title} </h2>
-      <p> {page},{id} </p>
-    </div>
-  )
-}
+// // not hoisted like function definitions and no local "this"
+// export const useArrowFunction = ({ data }) => {
+//   let { title, page, id } = data;
+//   return (
+//     <div>
+//       <h2> {title} </h2>
+//       <p> {page},{id} </p>
+//     </div>
+//   )
+// }
 
-export const useObjIsEqual = (isShallow) => {
-  const obj1 = { name: "John", age: "25" }
-  const obj2 = { name: "John", age: "25" }
-  const obj3 = obj1 // pass by reference will work with ===
-  // lodash (_.) isEqual deep equality checker used
-  return console.log(isShallow ? obj1 === obj3 : _.isEqual(object1, obj2))
-}
+// export const useObjIsEqual = (isShallow) => {
+//   const obj1 = { name: "John", age: "25" }
+//   const obj2 = { name: "John", age: "25" }
+//   const obj3 = obj1 // pass by reference will work with ===
+//   // lodash (_.) isEqual deep equality checker used
+//   return console.log(isShallow ? obj1 === obj3 : _.isEqual(object1, obj2))
+// }
 
 const useEqualityCheck = (isStrict) => {
   const int = 1
@@ -83,6 +83,21 @@ const useIterationsMap = (map) => {
   });
 }
 
+const useTodayDateFormatted = () => {
+  const date = new Date();
+  console.log(date)
+  console.log("Showing date time in UTC")
+  console.log(new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'short',
+    timeStyle: 'long', timeZone: 'UTC'
+  }).format(date));
+  console.log("Showing date in pros with SG time zone")
+  console.log(new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'full',
+    timeStyle: 'long', timeZone: 'Singapore'
+  }).format(date));
+}
+
 // process user input
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -112,9 +127,11 @@ rl.question('Enter the type of function to execute: ', (userInput) => {
     case 'useEqualityCheck false':
       useEqualityCheck(false);
       break;
+    case 'useTodayDateFormatted':
+      useTodayDateFormatted()
+      break;
     default:
       console.log("invalid input")
   }
   rl.close();
 });
-
