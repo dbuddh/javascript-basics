@@ -98,6 +98,24 @@ const useTodayDateFormatted = () => {
   }).format(date));
 }
 
+const useSpreadWithObjectAssign = () => {
+  const obj1 = {
+    name: "John", country: "America", details:
+      { "age": 25, "gender": "M", "dob": "1/1/1998" }
+  };
+  const obj2 = {
+    name: "Doe", details:
+      { "age": 24, "dob": "1/1/1999" }
+  };
+
+  // this means all attributes from obj1 with exception of details
+  // and even for details, only take obj2 details that clash with obj1
+  // and for the rest still use obj1's details
+  const obj3 = Object.assign({}, obj1,
+    { details: { ...obj1.details, ...obj2.details } });
+  console.log(JSON.stringify(obj3))
+}
+
 // process user input
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -129,6 +147,9 @@ rl.question('Enter the type of function to execute: ', (userInput) => {
       break;
     case 'useTodayDateFormatted':
       useTodayDateFormatted()
+      break;
+    case 'useSpreadWithObjectAssign':
+      useSpreadWithObjectAssign()
       break;
     default:
       console.log("invalid input")
