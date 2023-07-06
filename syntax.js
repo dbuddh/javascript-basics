@@ -118,6 +118,9 @@ const useSpreadWithObjectAssign = () => {
   console.log(JSON.stringify(obj3))
 }
 
+// non primitive types that will not be copied (shallow)
+// Object,Array,Function,Date,RegExp,Error,Map,
+// Set,WeakMap,WeakSet
 const useSpreadShallowCopy = () => {
   const obj1 = {
     name: "John", country: "America", details:
