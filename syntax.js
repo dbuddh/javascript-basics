@@ -101,11 +101,11 @@ const useTodayDateFormatted = () => {
 const useSpreadWithObjectAssign = () => {
   const obj1 = {
     name: "John", country: "America", details:
-      { "age": 25, "gender": "M", "dob": "1/1/1998" }
+      { age: 25, gender: "M", dob: "1/1/1998" }
   };
   const obj2 = {
     name: "Doe", details:
-      { "age": 24, "dob": "1/1/1999" }
+      { age: 24, dob: "1/1/1999" }
   };
 
   // this means all attributes from obj1 with exception of details
