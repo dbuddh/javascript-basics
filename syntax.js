@@ -108,12 +108,39 @@ const useSpreadWithObjectAssign = () => {
       { age: 24, dob: "1/1/1999" }
   };
 
-  // this means all attributes from obj1 with exception of details
-  // and even for details, only take obj2 details that clash with obj1
+  // this means all attributes from obj1 with
+  // exception of details
+  // and even for details, only take obj2 details
+  // that clash with obj1
   // and for the rest still use obj1's details
   const obj3 = Object.assign({}, obj1,
     { details: { ...obj1.details, ...obj2.details } });
   console.log(JSON.stringify(obj3))
+}
+
+const useSpreadShallowCopy = () => {
+  const obj1 = {
+    name: "John", country: "America", details:
+      { age: 25, gender: "M", dob: "1/1/1998" },
+    hobbies: ['reading']
+  };
+  const obj2 = {
+    name: "Doe", details:
+      { age: 24, dob: "1/1/1999" },
+    hobbies: ['sleeping']
+  };
+
+  // in this example since obj1 and obj2 share
+  // name and details, only obj2's attributes for
+  // those get chosen
+  const obj3 = { ...obj1, ...obj2 }
+  console.log(JSON.stringify(obj3));
+
+  // notice how even though we're pushing to
+  // obj3's hobbies, coding will now be in obj2's
+  // hobbies too
+  obj3.hobbies.push('coding');
+  console.log(JSON.stringify(obj2));
 }
 
 // process user input
@@ -150,6 +177,9 @@ rl.question('Enter the type of function to execute: ', (userInput) => {
       break;
     case 'useSpreadWithObjectAssign':
       useSpreadWithObjectAssign()
+      break;
+    case 'useSpreadShallowCopy':
+      useSpreadShallowCopy()
       break;
     default:
       console.log("invalid input")
