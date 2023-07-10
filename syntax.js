@@ -145,6 +145,7 @@ const useSpreadShallowCopy = () => {
   obj3.hobbies.push('coding');
   console.log(JSON.stringify(obj2));
 
+  // adds all entries in hobbies array
   const obj4 = Object.assign({}, obj1,
     { hobbies: [...obj1.hobbies, ...obj2.hobbies] });
   console.log(JSON.stringify(obj4))
