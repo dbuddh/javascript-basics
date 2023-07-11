@@ -156,6 +156,17 @@ const useURL = () => {
   console.log(url)
 }
 
+const useURLwithSearchParams = () => {
+  let url = new URL("https://example.com?foo=1&bar=2");
+  let params = new URLSearchParams(url.search);
+
+  // Add a third parameter.
+  params.set("baz", 3);
+  params.set("language", "en zh ja")
+  params.toString(); // "foo=1&bar=2&baz=3"
+  console.log(url)
+}
+
 // process user input
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -196,6 +207,9 @@ rl.question('Enter the type of function to execute: ', (userInput) => {
       break;
     case 'useURL':
       useURL()
+      break;
+    case 'useURLwithSearchParams':
+      useURLwithSearchParams()
       break;
     default:
       console.log("invalid input")
