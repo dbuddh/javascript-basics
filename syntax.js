@@ -158,13 +158,15 @@ const useURL = () => {
 
 const useURLwithSearchParams = () => {
   let url = new URL("https://example.com?foo=1&bar=2");
+  url.searchParams.set('language', "[ \"en\", \"ja\" ,\"zh\"]")
+  console.log(url)
   let params = new URLSearchParams(url.search);
 
   // Add a third parameter.
   params.set("baz", 3);
-  params.set("language", "en zh ja")
-  params.toString(); // "foo=1&bar=2&baz=3"
-  console.log(url)
+  //auto encoding
+  // "foo=1&bar=2&language=%5B+%22en%22%2C+%22ja%22+%2C%22zh%22%5D&baz=3"
+  console.log(params.toString());
 }
 
 // process user input
