@@ -151,6 +151,11 @@ const useSpreadShallowCopy = () => {
   console.log(JSON.stringify(obj4))
 }
 
+const useURL = () => {
+  const url = new URL("/en-US/docs", "https://developer.mozilla.org/fr-FR/toto");
+  console.log(url)
+}
+
 // process user input
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -188,6 +193,9 @@ rl.question('Enter the type of function to execute: ', (userInput) => {
       break;
     case 'useSpreadShallowCopy':
       useSpreadShallowCopy()
+      break;
+    case 'useURL':
+      useURL()
       break;
     default:
       console.log("invalid input")
