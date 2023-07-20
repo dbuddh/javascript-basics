@@ -1,1 +1,1 @@
-# javascript-basics
+# Webdev-starter-kit
