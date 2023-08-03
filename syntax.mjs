@@ -1,40 +1,5 @@
-// export function useJSX({ data }) {
-//   let { title, page, id } = data;
-//   return (
-//     <div>
-//       <h2> {title} </h2>
-//       <p> {page},{id} </p>
-//     </div>
-//   )
-// }
-
-// export function useSpreadOperation({ data }) {
-//   const obj = { ...data, name: "test" }
-//   return (
-//     <div>
-//       <h2> {obj.name} </h2>
-//     </div>
-//   )
-// }
-
-// // not hoisted like function definitions and no local "this"
-// export const useArrowFunction = ({ data }) => {
-//   let { title, page, id } = data;
-//   return (
-//     <div>
-//       <h2> {title} </h2>
-//       <p> {page},{id} </p>
-//     </div>
-//   )
-// }
-
-// export const useObjIsEqual = (isShallow) => {
-//   const obj1 = { name: "John", age: "25" }
-//   const obj2 = { name: "John", age: "25" }
-//   const obj3 = obj1 // pass by reference will work with ===
-//   // lodash (_.) isEqual deep equality checker used
-//   return console.log(isShallow ? obj1 === obj3 : _.isEqual(object1, obj2))
-// }
+import readline from "readline";
+import crypto from "crypto";
 
 const useEqualityCheck = (isStrict) => {
   const int = 1
@@ -169,8 +134,11 @@ const useURLwithSearchParams = () => {
   console.log(params.toString());
 }
 
+const useRandomUUID = () => {
+  console.log(crypto.randomUUID());
+}
+
 // process user input
-const readline = require("readline");
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -212,6 +180,9 @@ rl.question('Enter the type of function to execute: ', (userInput) => {
       break;
     case 'useURLwithSearchParams':
       useURLwithSearchParams()
+      break;
+    case 'useRandomUUID':
+      useRandomUUID()
       break;
     default:
       console.log("invalid input")
