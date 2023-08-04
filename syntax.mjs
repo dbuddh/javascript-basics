@@ -1,5 +1,14 @@
 import readline from "readline";
 import crypto from "crypto";
+import _ from "lodash";
+
+export const useObjIsEqual = (isShallow) => {
+  const obj1 = { name: "John", age: "25" }
+  const obj2 = { name: "John", age: "25" }
+  const obj3 = obj1 // pass by reference will work with ===
+  // lodash (_.) isEqual deep equality checker used
+  return console.log(isShallow ? obj1 === obj3 : _.isEqual(obj1, obj2))
+}
 
 const useEqualityCheck = (isStrict) => {
   const int = 1
@@ -146,6 +155,9 @@ const rl = readline.createInterface({
 
 rl.question('Enter the type of function to execute: ', (userInput) => {
   switch (userInput) {
+    case 'useObjIsEqual':
+      useObjIsEqual(false)
+      break;
     case 'useIterationsMap':
       useIterationsMap(new Map([[1, "one"], [2, "two"], [3, "three"]]))
       break;
