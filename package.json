@@ -1,6 +1,7 @@
 {
   "name": "webdev-starter-kit",
   "version": "1.0.0",
+  "type": "module",
   "description": "A repo to help with javascript webdev syntax and configurations",
   "main": "index.js",
   "scripts": {
